@@ -17,7 +17,7 @@ repositories {
 val vertxVersion = "4.0.2"
 val junitJupiterVersion = "5.7.0"
 
-val mainVerticleName = "com.example.starter.MainVerticle"
+val mainVerticleName = "com.example.jokehttpclient.JokeVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
 
 val watchForChange = "src/**/*"
@@ -30,6 +30,7 @@ application {
 dependencies {
   implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
   implementation("io.vertx:vertx-web")
+  implementation("io.vertx:vertx-web-client")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
