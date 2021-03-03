@@ -5,6 +5,7 @@ plugins {
   java
   application
   id("com.github.johnrengelman.shadow") version "6.1.0"
+  id("io.dotinc.vertx-codegen-plugin") version "0.1.1"
 }
 
 group = "com.example"
@@ -31,6 +32,8 @@ dependencies {
   implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
   implementation("io.vertx:vertx-web")
   implementation("io.vertx:vertx-web-client")
+  implementation("io.vertx:vertx-service-proxy")
+  implementation("io.vertx:vertx-codegen")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
@@ -38,6 +41,12 @@ dependencies {
 java {
   sourceCompatibility = JavaVersion.VERSION_1_8
   targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+codeGen {
+  vertxVersion = "4.0.0.CR2"
+  generatedDirs = "src/main/generated"
+  generationPath = "proxy"
 }
 
 tasks.withType<ShadowJar> {
